@@ -1,0 +1,341 @@
+/* ================================
+   SLAPMAP: EAST BAY — STYLES.CSS
+   ================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: #000;
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffcc;
+  overflow: hidden;
+}
+
+/* ---------- NAVIGATION ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 0.6rem 0;
+  z-index: 10000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.navbar-container {
+  display: inline-block;
+}
+
+.navbar .nav-link {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff;
+  text-decoration: none;
+  margin: 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ff00ff;
+  text-shadow: 0 0 6px #ff00ff;
+}
+
+/* Add spacing so nav doesn’t overlap content */
+body {
+  padding-top: 60px;
+}
+
+/* ---------- MAP ---------- */
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  filter: saturate(1.3) contrast(1.1);
+}
+
+/* ---------- LOADING SCREEN ---------- */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #080808 0%, #000 100%);
+  color: #00ffcc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+#loading-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ffcc, #ff00cc);
+  transition: width 0.3s ease;
+}
+
+/* ---------- CATEGORY BUTTONS ---------- */
+.button-container {
+  position: absolute;
+  top: 70px; /* shifted down below nav */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button-container button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button-container button:hover {
+  background: #00ffcc;
+  color: #000;
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+.button-container button.active {
+  background: #ff00cc;
+  color: #fff;
+  box-shadow: 0 0 10px #ff00cc;
+}
+
+/* ---------- POPUP ---------- */
+.popup-content {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  padding: 10px;
+  color: #b8fff0;
+  box-shadow: 0 0 15px #00ffcc;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.popup-title {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffcc;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.popup-title:hover {
+  color: #ff00cc;
+  text-shadow: 0 0 8px #ff00cc;
+}
+
+.price-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #00ffcc, #ff00cc);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* ---------- PRO TIP ---------- */
+.protip {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: rgba(255, 0, 204, 0.1);
+  border-left: 3px solid #ff00cc;
+  font-style: italic;
+  color: #ff99ff;
+  font-family: 'VT323', monospace;
+  text-shadow: 0 0 6px #ff00cc;
+}
+
+.protip .label {
+  color: #ff00cc;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+/* ---------- MEGA TITLE ---------- */
+.mega-title {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 13vw, 15rem);
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc, 0 0 30px #00ffcc, 0 0 60px #ff00cc,
+    0 0 120px #ff00cc;
+  opacity: 0.25;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: pulseHue 8s infinite alternate;
+}
+
+@keyframes pulseHue {
+  0% {
+    filter: hue-rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    filter: hue-rotate(90deg) brightness(1.3);
+    opacity: 0.4;
+  }
+  100% {
+    filter: hue-rotate(360deg);
+    opacity: 0.25;
+  }
+}
+
+/* ---------- CRT OVERLAY ---------- */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  animation: flicker 0.1s infinite;
+  z-index: 9999;
+}
+
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 0.05;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.12;
+  }
+}
+
+/* ---------- TERMINAL STYLE ABOUT PAGE ---------- */
+body.terminal {
+  background: #000;
+  color: #00ffcc;
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 2rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal-container {
+  max-width: 700px;
+  width: 90%;
+  text-align: left;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.15);
+  animation: flicker 0.08s infinite alternate;
+}
+
+.terminal-title {
+  color: #00ffff;
+  text-transform: lowercase;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-text {
+  white-space: pre-line;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.terminal-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #ff00ff;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-weight: bold;
+}
+
+.terminal-link:hover {
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+/* subtle flicker */
+@keyframes flicker {
+  0% { opacity: 0.99; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
+}
+
+/* ---------- FORUM STYLING ---------- */
+.terminal-forum {
+  margin-top: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+}
+
+.giscus {
+  font-family: 'VT323', monospace;
+}

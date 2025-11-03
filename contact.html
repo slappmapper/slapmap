@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Static Website</title>
+    <meta name="description" content="Contact page for my static website">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/components.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/contact.html" class="nav-link active">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <h1>Contact Us</h1>
+            <p class="lead">Get in touch using the form below.</p>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-textarea" placeholder="Your message..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    
+                    <div id="formResult" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/utils.js"></script>
+    <script src="/script.js"></script>
+    <script>
+        // Example form handling using utility functions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Validate email using utility
+            if (!utils.isEmail(formData.email)) {
+                document.getElementById('formResult').innerHTML = 
+                    '<div class="alert alert-danger">Please enter a valid email address.</div>';
+                return;
+            }
+            
+            // Show success message (in a real app, you'd send this to a server)
+            document.getElementById('formResult').innerHTML = 
+                '<div class="alert alert-success">Thank you! Your message has been sent.</div>';
+            
+            // Reset form
+            this.reset();
+            
+            // Store in local storage as example
+            const messages = utils.storage.get('messages', []);
+            messages.push({ ...formData, timestamp: new Date().toISOString() });
+            utils.storage.set('messages', messages);
+            
+            console.log('Form submitted:', formData);
+        });
+    </script>
+</body>
+</html>

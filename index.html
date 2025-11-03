@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLAPMAP: East Bay — only hits, all favoritism</title>
+
+    <!-- Libraries -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+
+    <!-- Fonts + Styles -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+   
+    <!-- === META / SOCIAL / SEO === -->
+    <meta name="description" content="SLAPMAP: East Bay — only hits, all favoritism. A lived-in, fully biased guide to the East Bay.">
+    <meta name="keywords" content="East Bay, Oakland, Berkeley, restaurants, bars, SlapMap, Bay Area, local guide">
+    <meta name="author" content="Anonymous">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:title" content="SLAPMAP: East Bay">
+    <meta property="og:description" content="Only hits, all favoritism — a biased guide to the East Bay.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://slapmap.replit.app/">
+    <meta property="og:image" content="https://slapmap.replit.app/preview.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SLAPMAP: East Bay">
+    <meta name="twitter:description" content="Only hits, all favoritism. A biased guide to the East Bay.">
+    <meta name="twitter:image" content="https://slapmap.replit.app/preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+  </head>
+
+  <body>
+    <!-- ---------- NAVIGATION ---------- -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/forum.html" class="nav-link">Forum</a>
+      </div>
+    </nav>
+
+    <!-- ---------- LOADING SCREEN ---------- -->
+    <div id="loading-screen">
+      <div class="loading-window">
+        <div class="title-bar">
+          <span>SlapMap System v1.993</span>
+          <button id="close-btn">✕</button>
+        </div>
+        <div class="content">
+          <p>Initializing <strong>SlapMap World...</strong></p>
+          <div class="progress-bar"><div class="progress-fill"></div></div>
+          <p id="progress-text">Booting...</p>
+          <button id="sound-toggle">On/Off</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------- OVERLAYS ---------- -->
+    <div class="crt-overlay"></div>
+    <div class="neon-grid"></div>
+
+    <!-- ---------- HUD ---------- -->
+    <div id="system-clock">
+      <span id="clock-text"></span>
+      <div id="data-stream"></div>
+    </div>
+
+    <!-- ---------- HEADER ---------- -->
+    <header class="retro-header">
+      <div class="header-bar">
+        <h1>SlapMap: East Bay</h1>
+        <p>only hits, all favoritism</p>
+      </div>
+
+      <nav class="retro-nav">
+        <button>food</button>
+        <button>drinks</button>
+        <button>objects dept</button>
+        <button>aesthetic moments</button>
+        <button>touch grass</button>
+      </nav>
+    </header>
+
+    <!-- ---------- CATEGORY FILTER BUTTONS ---------- -->
+    <div class="button-container">
+      <button data-category="Food">Food</button>
+      <button data-category="Drinks">Drinks</button>
+      <button data-category="objects dept">Objects Dept</button>
+      <button data-category="aesthetic moments">Aesthetic Moments</button>
+      <button data-category="touch grass">Touch Grass</button>
+      <button data-category="all">Show All</button>
+    </div>
+
+    <!-- ---------- MAP ---------- -->
+    <main>
+      <section class="map-wrapper">
+        <div id="map"></div>
+        <h1 class="mega-title glitch" data-text="ALLHITS.ALLFAVORATISM">
+          FAVORATISM
+        </h1>
+      </section>
+    </main>
+
+    <!-- ---------- SCRIPT ---------- -->
+    <script src="./script.js"></script>
+  </body>
+</html>
