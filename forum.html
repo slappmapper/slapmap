@@ -10,12 +10,30 @@
   </head>
 
   <body class="terminal">
+  <body class="terminal forum-page">
     <div class="terminal-container">
       <h1 class="terminal-title">forum</h1>
       <p class="terminal-text">
         welcome to the SlapMap public forum. dispute below.
       </p>
       <div id="giscus" class="terminal-forum"></div>
+      <p class="terminal-note">
+        choose your lane: stay with <strong>github</strong> powered threads or jump into
+        an <strong>alt login</strong> that supports email, google, and more.
+      </p>
+
+      <div class="terminal-tabs" role="tablist" aria-label="comment provider selector">
+        <button id="giscus-tab" class="tab-button active" role="tab" aria-selected="true" aria-controls="giscus" data-target="giscus" tabindex="0">
+          github discussions
+        </button>
+        <button id="disqus-tab" class="tab-button" role="tab" aria-selected="false" aria-controls="disqus_thread" data-target="disqus_thread" tabindex="-1">
+          alt login (disqus)
+        </button>
+      </div>
+
+      <div id="giscus" class="terminal-forum active" role="tabpanel" aria-labelledby="giscus-tab"></div>
+      <div id="disqus_thread" class="terminal-forum" role="tabpanel" aria-labelledby="disqus-tab" hidden></div>
+
       <a href="/" class="terminal-link">← back to map</a>
     </div>
 
@@ -35,5 +53,52 @@
             crossorigin="anonymous"
             async>
     </script>
+
+    <script>
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const forumPanels = document.querySelectorAll('.terminal-forum');
+      let disqusLoaded = false;
+
+      function setActiveForum(targetId) {
+        forumPanels.forEach((panel) => {
+          const isMatch = panel.id === targetId;
+          panel.classList.toggle('active', isMatch);
+          panel.toggleAttribute('hidden', !isMatch);
+        });
+
+        tabButtons.forEach((button) => {
+          const isActive = button.dataset.target === targetId;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          button.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+
+        if (targetId === 'disqus_thread' && !disqusLoaded) {
+          window.disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = window.location.pathname;
+          };
+
+          const d = document;
+          const s = d.createElement('script');
+          s.src = 'https://slapmap.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', Date.now().toString());
+          (d.head || d.body).appendChild(s);
+          disqusLoaded = true;
+        }
+      }
+
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          setActiveForum(button.dataset.target);
+        });
+      });
+
+      setActiveForum('giscus');
+    </script>
+
+    <noscript>
+      please enable javascript to view the comments powered by disqus.
+    </noscript>
   </body>
 </html>
