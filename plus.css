@@ -1,0 +1,201 @@
+-0
+
+/* ================================
+   SLAPMAP: PAYWALL EXPERIENCE
+   ================================ */
+
+body.paywall-page {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #050505 0%, #010101 60%, #000 100%);
+  color: #e0fff9;
+  min-height: 100vh;
+  padding-top: 80px;
+  overflow-y: auto;
+}
+
+.paywall-page .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.paywall-page main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero {
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #00ffcc;
+  text-shadow: 0 0 14px rgba(0, 255, 204, 0.5);
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: #c5fdf1;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.callout {
+  border: 1px solid rgba(0, 255, 204, 0.35);
+  background: linear-gradient(135deg, rgba(0, 255, 204, 0.12), rgba(255, 0, 255, 0.08));
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  color: #9ef7ff;
+  line-height: 1.5;
+  box-shadow: 0 0 28px rgba(0, 255, 204, 0.15);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .grid.two-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.card-cyber {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 255, 204, 0.25);
+  border-radius: 14px;
+  padding: 1.8rem;
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.card-cyber h2 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ff73ff;
+}
+
+.card-cyber h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #00ffcc;
+}
+
+.card-cyber p,
+.card-cyber li {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: #c8fff5;
+  line-height: 1.6;
+}
+
+.card-cyber ol,
+.card-cyber ul {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.card-cyber .btn-primary {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #00ffcc, #ff00ff);
+  border: none;
+  color: #000;
+  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  justify-self: start;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.25);
+}
+
+.card-cyber .btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.notice {
+  font-size: 0.85rem;
+  color: rgba(224, 255, 249, 0.7);
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.success-panel {
+  border: 1px solid rgba(0, 255, 204, 0.4);
+  background: rgba(0, 50, 45, 0.6);
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: grid;
+  gap: 1rem;
+}
+
+.success-panel h2 {
+  color: #00ffcc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.success-panel a {
+  color: #ff7bff;
+  text-decoration: underline;
+}
+
+.faq {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+  padding-bottom: 1rem;
+}
+
+.faq-item h3 {
+  color: #00ffcc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: #c8fff5;
+  line-height: 1.6;
+}
+
+.footer-link {
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: rgba(224, 255, 249, 0.65);
+}
+
+.footer-link a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+.footer-link a:hover {
+  color: #ff00ff;
+}
