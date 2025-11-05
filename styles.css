@@ -354,8 +354,6 @@ body.terminal.forum-page .terminal-container {
 }
 
 /* ---------- FORUM STYLING ---------- */
-.terminal-forum {
-  margin-top: 2rem;
 .terminal-note {
   margin-top: 1.25rem;
   color: rgba(0, 255, 204, 0.85);
@@ -366,83 +364,23 @@ body.terminal.forum-page .terminal-container {
   color: #ff00ff;
 }
 
-.forum-providers {
-  margin-top: 1.75rem;
-  display: grid;
-  gap: 1.25rem;
-}
-
-.provider-tabs {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.provider-tab {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 255, 204, 0.35);
-  color: #00ffcc;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0.6rem 1.1rem;
-  cursor: pointer;
-  font-family: 'VT323', monospace;
-  font-size: 0.85rem;
-  border-radius: 6px;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.provider-tab:hover,
-.provider-tab:focus {
-  outline: none;
-  border-color: #ff00ff;
-  color: #ff99ff;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-}
-
-.provider-tab.is-active {
-  background: rgba(255, 0, 255, 0.12);
-  border-color: #ff00ff;
-  color: #ffb3ff;
-}
-
 .forum-panel {
   background: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(0, 255, 204, 0.3);
   border-radius: 8px;
+  margin-top: 2rem;
   padding: 1rem;
   padding: 1.1rem;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
   display: none;
 }
 
-.giscus {
 .forum-panel.giscus {
   font-family: 'VT323', monospace;
 }
 
 .forum-panel.is-active {
   display: block;
-}
-
-.forum-embed {
-  min-height: 320px;
-}
-
-.forum-loading {
-  margin-bottom: 0.75rem;
-  color: rgba(0, 255, 204, 0.75);
-  font-family: 'VT323', monospace;
-}
-
-.forum-hint {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: rgba(0, 255, 204, 0.75);
-}
-
-.forum-hint a {
-  color: #ff99ff;
 }
 
 .noscript-hint {
@@ -454,14 +392,5 @@ body.terminal.forum-page .terminal-container {
 @media (max-width: 600px) {
   body.terminal.forum-page {
     padding: 2rem 1rem 2.5rem;
-  }
-
-  .provider-tabs {
-    width: 100%;
-  }
-
-  .provider-tab {
-    width: 100%;
-    text-align: center;
   }
 }
