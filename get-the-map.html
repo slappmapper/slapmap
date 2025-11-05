@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unlock the Google Maps Layer — SlapMap</title>
+    <meta
+      name="description"
+      content="Purchase instant access to the Google Maps version of SlapMap and copy it into your own account."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/components.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/plus.css" />
+  </head>
+  <body class="paywall-page">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/forum.html" class="nav-link">Forum</a>
+        <a href="/get-the-map.html" class="nav-link active">Get the Map</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <h1>unlock the google maps layer</h1>
+        <p>
+          Drop SlapMap directly into your own Google Maps with a couple taps. Pay once, grab the
+          invite-only My Maps link, and duplicate it into your account forever.
+        </p>
+      </section>
+
+      <aside class="callout">
+        <strong>How it works:</strong> checkout happens through a hosted Stripe Payment Link. Stripe
+        can automatically redirect successful buyers back here with <code>?success=1</code> where the
+        private Google My Maps link is revealed. Swap the URLs below with your real payment and map
+        links when you deploy.
+      </aside>
+
+      <section class="grid two-column">
+        <article class="card-cyber" id="checkout-card">
+          <h2>1. purchase access</h2>
+          <p>
+            Use any payment provider that gives you a hosted checkout (Stripe, Lemon Squeezy, Gumroad,
+            etc.). Set its success URL to
+            <code>https://yourdomain.com/get-the-map.html?success=1</code> so paying visitors unlock
+            the link instantly.
+          </p>
+          <a
+            href="https://buy.stripe.com/test_00000000000000"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+            >launch checkout</a
+          >
+          <p class="notice">
+            Replace the button URL with your production payment link. Stripe Payment Links let you set
+            price, description, and after-checkout redirect without touching code.
+          </p>
+        </article>
+
+        <article class="card-cyber hidden" id="map-access">
+          <h2>2. grab the map</h2>
+          <div class="success-panel">
+            <h3>Access Granted</h3>
+            <p>
+              Open the private My Maps layer, then click the three dots → <em>Copy map</em> inside
+              Google Maps to save it to your account.
+            </p>
+            <a
+              id="google-map-link"
+              href="https://www.google.com/maps/d/viewer?mid=SLAPMAP_MYMAP_PLACEHOLDER"
+              target="_blank"
+              rel="noopener"
+              >Open SlapMap in Google My Maps →</a
+            >
+          </div>
+          <h3>import checklist</h3>
+          <ol>
+            <li>Sign into Google with the account you want to save SlapMap into.</li>
+            <li>Open the link above and choose <em>Copy map</em> to clone it.</li>
+            <li>
+              If you want turn-by-turn directions, export layers as KML and import into Google Maps on
+              mobile.
+            </li>
+          </ol>
+          <p class="notice">
+            Swap the <code>href</code> above with the real, shareable link for your hidden My Maps copy.
+          </p>
+        </article>
+      </section>
+
+      <section class="card-cyber">
+        <h2>map owner checklist</h2>
+        <ol>
+          <li>
+            Create a clean Google account that owns the canonical My Maps version of SlapMap. Keep the
+            share setting to "Anyone with the link".
+          </li>
+          <li>
+            Build a hosted payment link (Stripe Payment Link recommended). Under "After payment" set
+            the redirect to
+            <code>https://yourdomain.com/get-the-map.html?success=1</code>.
+          </li>
+          <li>
+            Update the checkout button URL and the Google Maps link in this file. Optional: add
+            metadata to Stripe so you get notified when purchases happen.
+          </li>
+          <li>
+            (Optional) Duplicate this page and send a version with <code>?preview=1</code> to friends
+            who need manual access.
+          </li>
+        </ol>
+      </section>
+
+      <section class="card-cyber faq">
+        <h2>faq</h2>
+        <div class="faq-item">
+          <h3>can i actually hide a link on a static site?</h3>
+          <p>
+            You can't make it impossible to view the source, but redirecting buyers back here keeps the
+            flow smooth. The real security lives in Google My Maps — only people with the URL can copy
+            it. Rotate the link occasionally if you need to.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>what if someone shares the link?</h3>
+          <p>
+            You can revoke the old My Maps link at any time. Create a fresh duplicate, update the link
+            in this file, and only paying folks will have the latest copy.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>do i need code to run payments?</h3>
+          <p>
+            Nope. Stripe Payment Links, Gumroad, or Lemon Squeezy all host checkout for you. This page
+            simply forwards people there and handles the success redirect.
+          </p>
+        </div>
+      </section>
+
+      <p class="footer-link">
+        Want to keep exploring? <a href="/">Return to the interactive map.</a>
+      </p>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const shouldUnlock = params.get('success') === '1' || params.get('preview') === '1';
+      const accessPanel = document.getElementById('map-access');
+      const checkoutCard = document.getElementById('checkout-card');
+
+      if (shouldUnlock) {
+        accessPanel.classList.remove('hidden');
+        checkoutCard.classList.remove('card-cyber');
+        checkoutCard.classList.add('hidden');
+      }
+    </script>
+  </body>
+</html>
