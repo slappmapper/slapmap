@@ -9,183 +9,39 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
   </head>
 
-  <body class="terminal">
   <body class="terminal forum-page">
     <div class="terminal-container">
       <h1 class="terminal-title">forum</h1>
       <p class="terminal-text">
         welcome to the SlapMap public forum. dispute below.
       </p>
-      <div id="giscus" class="terminal-forum"></div>
+     <div class="forum-panel giscus is-active">
+        <script src="https://giscus.app/client.js"
+                data-repo="slappedfbs/slapmap-forum"
+                data-repo-id="R_kgDOQL4cvQ"
+                data-category="General"
+                data-category-id="DIC_kwDOQL4cvc4CxPqO"
+                data-mapping="url"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="1"
+                data-input-position="bottom"
+                data-theme="transparent_dark"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+
       <p class="terminal-note">
-        choose the discussion thread that fits. github handles land in the default tab.
-        need an email or social sign-in? hop over to disqus instead.
+          sign in with your github account to join the conversation.
       </p>
-
-      <section class="forum-providers" aria-label="comment provider selector">
-        <div class="provider-tabs" role="tablist">
-          <button
-            id="provider-giscus"
-            class="provider-tab is-active"
-            type="button"
-            role="tab"
-            aria-selected="true"
-            aria-controls="forum-giscus"
-            data-provider="giscus"
-          >
-            github discussions
-          </button>
-          <button
-            id="provider-disqus"
-            class="provider-tab"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            aria-controls="forum-disqus"
-            data-provider="disqus"
-          >
-            email &amp; social login (disqus)
-          </button>
-        </div>
-
-        <div
-          id="forum-giscus"
-          class="forum-panel giscus is-active"
-          role="tabpanel"
-          tabindex="0"
-          aria-labelledby="provider-giscus"
-        ></div>
-
-        <div
-          id="forum-disqus"
-          class="forum-panel"
-          role="tabpanel"
-          tabindex="0"
-          aria-labelledby="provider-disqus"
-          hidden
-        >
-          <p class="forum-loading" id="disqus-loading" aria-live="polite" hidden>
-            warming up disqus…
-          </p>
-          <div id="disqus_thread" class="forum-embed"></div>
-          <p class="forum-hint" id="disqus-hint" hidden>
-            if the embed is stubborn, you can open the thread directly on
-            <a href="https://disqus.com/home/discussion/slapmap/slapmap_forum/" target="_blank" rel="noreferrer noopener">disqus</a>.
-          </p>
-        </div>
-      </section>
 
       <a href="/" class="terminal-link">← back to map</a>
     </div>
 
-    <!-- Giscus Embed -->
-    <script src="https://giscus.app/client.js"
-            data-repo="slappedfbs/slapmap-forum"
-            data-repo-id="R_kgDOQL4cvQ"
-            data-category="General"
-            data-category-id="DIC_kwDOQL4cvc4CxPqO"
-            data-mapping="url"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="1"
-            data-input-position="bottom"
-            data-theme="transparent_dark"
-            data-lang="en"
-            crossorigin="anonymous"
-            async>
-    </script>
-
-    <script>
-      const tabButtons = document.querySelectorAll('[data-provider]');
-      const tabPanels = {
-        giscus: document.getElementById('forum-giscus'),
-        disqus: document.getElementById('forum-disqus'),
-      };
-      const disqusLoadingMessage = document.getElementById('disqus-loading');
-      const disqusHint = document.getElementById('disqus-hint');
-      let disqusState = 'idle';
-
-      function setActiveProvider(provider) {
-        tabButtons.forEach((button) => {
-          const isActive = button.dataset.provider === provider;
-          button.classList.toggle('is-active', isActive);
-          button.setAttribute('aria-selected', String(isActive));
-          button.setAttribute('tabindex', isActive ? '0' : '-1');
-        });
-
-        Object.entries(tabPanels).forEach(([key, panel]) => {
-          const isActive = key === provider;
-          panel.classList.toggle('is-active', isActive);
-          panel.toggleAttribute('hidden', !isActive);
-        });
-
-        if (provider === 'disqus') {
-          ensureDisqus();
-        }
-      }
-
-      function ensureDisqus() {
-        if (disqusState === 'loaded') {
-          if (window.DISQUS && typeof window.DISQUS.reset === 'function') {
-            window.DISQUS.reset({
-              reload: true,
-              config: disqusConfig,
-            });
-          }
-          return;
-        }
-
-        if (disqusState === 'loading') return;
-        disqusState = 'loading';
-        disqusLoadingMessage.hidden = false;
-
-        window.disqus_config = disqusConfig;
-
-        const script = document.createElement('script');
-        script.src = 'https://slapmap.disqus.com/embed.js';
-        script.async = true;
-        script.setAttribute('data-timestamp', Date.now().toString());
-        script.addEventListener('error', () => {
-          disqusLoadingMessage.hidden = true;
-          disqusHint.hidden = false;
-          disqusState = 'error';
-        });
-        script.addEventListener('load', () => {
-          disqusLoadingMessage.hidden = true;
-          disqusHint.hidden = false;
-          disqusState = 'loaded';
-        });
-
-        document.body.appendChild(script);
-      }
-
-      function disqusConfig() {
-        this.page.url = window.location.href;
-        this.page.identifier = window.location.pathname || 'forum';
-        this.page.title = document.title;
-      }
-
-      tabButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          setActiveProvider(button.dataset.provider);
-        });
-
-        button.addEventListener('keydown', (event) => {
-          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-
-          const currentIndex = Array.from(tabButtons).indexOf(button);
-          const offset = event.key === 'ArrowRight' ? 1 : -1;
-          const nextButton = tabButtons[(currentIndex + offset + tabButtons.length) % tabButtons.length];
-          nextButton.focus();
-          nextButton.click();
-        });
-      });
-
-      setActiveProvider('giscus');
-    </script>
-
     <noscript class="noscript-hint">
-      please enable javascript to view the comments powered by disqus.
+       please enable javascript to view the comments powered by github discussions.
     </noscript>
   </body>
 </html>
