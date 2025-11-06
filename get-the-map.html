@@ -31,26 +31,22 @@
       <section class="hero">
         <h1>unlock the google maps layer</h1>
         <p>
-          Drop SlapMap directly into your own Google Maps with a couple taps. Pay once, grab the
-          invite-only My Maps link, and duplicate it into your account forever.
+          Pay once to drop the complete SlapMap layer straight into your Google Maps. After checkout
+          you'll land back here with instant access to the private My Maps link.
         </p>
       </section>
 
       <aside class="callout">
-        <strong>How it works:</strong> checkout happens through a hosted Stripe Payment Link. Stripe
-        can automatically redirect successful buyers back here with <code>?success=1</code> where the
-        private Google My Maps link is revealed. Swap the URLs below with your real payment and map
-        links when you deploy.
+        <strong>What you get:</strong> lifetime access to our curated spots, future layer updates, and
+        a one-click import into your own Google account. Checkout is handled securely by Stripe.
       </aside>
 
       <section class="grid two-column">
         <article class="card-cyber" id="checkout-card">
           <h2>1. purchase access</h2>
           <p>
-            Use any payment provider that gives you a hosted checkout (Stripe, Lemon Squeezy, Gumroad,
-            etc.). Set its success URL to
-            <code>https://yourdomain.com/get-the-map.html?success=1</code> so paying visitors unlock
-            the link instantly.
+            Securely complete your purchase through Stripe. You'll be redirected back here
+            automatically with your personal Google My Maps link.
           </p>
           <a
             href="https://buy.stripe.com/4gM00jeeb1Jwa1tcP8gIo00"
@@ -59,10 +55,7 @@
             class="btn btn-primary"
             >launch checkout</a
           >
-          <p class="notice">
-            Replace the button URL with your production payment link. Stripe Payment Links let you set
-            price, description, and after-checkout redirect without touching code.
-          </p>
+          <p class="notice">Need help? Email <a href="mailto:hello@slapmap.com">hello@slapmap.com</a>.</p>
         </article>
 
         <article class="card-cyber hidden" id="map-access">
@@ -90,33 +83,8 @@
               mobile.
             </li>
           </ol>
-          <p class="notice">
-            Swap the <code>href</code> above with the real, shareable link for your hidden My Maps copy.
-          </p>
+          <p class="notice">Keep this link private—only paying members receive it.</p>
         </article>
-      </section>
-
-      <section class="card-cyber">
-        <h2>map owner checklist</h2>
-        <ol>
-          <li>
-            Create a clean Google account that owns the canonical My Maps version of SlapMap. Keep the
-            share setting to "Anyone with the link".
-          </li>
-          <li>
-            Build a hosted payment link (Stripe Payment Link recommended). Under "After payment" set
-            the redirect to
-            <code>https://yourdomain.com/get-the-map.html?success=1</code>.
-          </li>
-          <li>
-            Update the checkout button URL and the Google Maps link in this file. Optional: add
-            metadata to Stripe so you get notified when purchases happen.
-          </li>
-          <li>
-            (Optional) Duplicate this page and send a version with <code>?preview=1</code> to friends
-            who need manual access.
-          </li>
-        </ol>
       </section>
 
       <section class="card-cyber faq">
@@ -124,23 +92,30 @@
         <div class="faq-item">
           <h3>can i actually hide a link on a static site?</h3>
           <p>
-            You can't make it impossible to view the source, but redirecting buyers back here keeps the
-            flow smooth. The real security lives in Google My Maps — only people with the URL can copy
-            it. Rotate the link occasionally if you need to.
+             Redirecting buyers back here keeps the flow smooth. The real security lives in Google My
+            Maps — only people with the URL can copy it. We rotate the link periodically to keep it
+            exclusive.
           </p>
         </div>
         <div class="faq-item">
           <h3>what if someone shares the link?</h3>
           <p>
-            You can revoke the old My Maps link at any time. Create a fresh duplicate, update the link
-            in this file, and only paying folks will have the latest copy.
+            The link is monitored. If it ever leaks, we'll rotate it and notify members so only paying
+            folks retain access to the latest copy.
           </p>
         </div>
         <div class="faq-item">
           <h3>do i need code to run payments?</h3>
           <p>
-            Nope. Stripe Payment Links, Gumroad, or Lemon Squeezy all host checkout for you. This page
-            simply forwards people there and handles the success redirect.
+            Nope. Stripe hosts checkout for us and handles the redirect back here. All you need to do
+            is tap the button, pay, and copy the map into your account.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>didn't get redirected after payment?</h3>
+          <p>
+            Refresh this page with the email receipt open, or contact support at
+            <a href="mailto:hello@slapmap.com">hello@slapmap.com</a> and we'll send the link manually.
           </p>
         </div>
       </section>
