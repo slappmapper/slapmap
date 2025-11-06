@@ -158,6 +158,48 @@ body.paywall-page {
   display: none !important;
 }
 
+@media (max-width: 900px) {
+  body.paywall-page {
+    padding-top: 72px;
+    padding-bottom: clamp(8rem, 20vh, 14rem);
+  }
+
+  .paywall-page main {
+    padding: 2rem 1.25rem clamp(8rem, 22vh, 12rem);
+  }
+
+  .grid.two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .card-cyber {
+    padding: 1.5rem;
+  }
+
+  .card-cyber .btn-primary {
+    justify-self: stretch;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero p {
+    font-size: 0.98rem;
+  }
+
+  .callout {
+    padding: 1.25rem;
+  }
+
+  .card-cyber h2 {
+    font-size: 1.35rem;
+  }
+
+  .card-cyber h3 {
+    font-size: 1rem;
+  }
+}
+
 .success-panel {
   border: 1px solid rgba(0, 255, 204, 0.4);
   background: rgba(0, 50, 45, 0.6);
