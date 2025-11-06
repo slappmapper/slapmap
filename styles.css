@@ -17,7 +17,7 @@ body {
   color: #00ffcc;
    }
 
-body {
+body:not(.paywall-page) {
   overflow: hidden;
 }
 
@@ -57,7 +57,7 @@ body {
 }
 
 /* Add spacing so nav doesn’t overlap content */
-body {
+body:not(.paywall-page) {
   padding-top: 60px;
 }
 
