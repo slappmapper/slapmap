@@ -93,7 +93,7 @@ const icons = {
 // ---------- LOAD CSV ----------
 const markers = [];
 
-Papa.parse("SlapMap csv - Sheet1 (8).csv", {
+Papa.parse("SlapMap csv - Sheet1 (9).csv", {
   download: true,
   header: true,
   complete: function (results) {
